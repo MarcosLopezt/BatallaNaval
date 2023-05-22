@@ -1,0 +1,3 @@
+C:/Users/tnovaira/BatallaNaval/cmake-build-debug/CMakeFiles/BatallaNaval.dir
+C:/Users/tnovaira/BatallaNaval/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tnovaira/BatallaNaval/cmake-build-debug/CMakeFiles/rebuild_cache.dir
