@@ -14,7 +14,7 @@ class jugador {
 
 public:
     jugador(){};
-    jugador(string nombre){
+    explicit jugador(string nombre){
         nom=nombre;
     }
 
@@ -45,28 +45,6 @@ public:
         delete[]bj;
     }
 
-    void setbj(int indice, int fila,int colu){ //set coord barco jugador
-        if(indice>=0 && indice<cant){
-            bj[indice].setfil(fila);
-            bj[indice].setcol(colu);
-        }
-    }
-
-    int getbcF(int indice){ // get filas de barco
-        if(indice>=0 && indice < cant){
-            return bj[indice].getfil();
-        }
-    }
-
-    int getbcC(int indice){ // get colum de barco
-        if(indice>=0 && indice < cant){
-            return bj[indice].getcol();
-        }
-    }
-
-    void settj(tablero& tab){
-        tj=tab;
-    }
 
     void ubicarbarco();
     void atacar(tablero* tc);
@@ -75,7 +53,7 @@ public:
 
 class cpu:public jugador{
     int cant=7;
-    barco* bc=new barco[7];
+    barco* bc;
     tablero tc;
 
 public:
@@ -90,30 +68,7 @@ public:
         delete []bc;
     }
 
-    void setbc(int indice, int filaa,int colu){ //set coordenadas de barco
-        if(indice>=0 && indice<cant){
-            bc[indice].setfil(filaa);
-            bc[indice].setcol(colu);
-        }
-    }
-
-    int getbcF(int indice){ // get filas de barco
-        if(indice>=0 && indice < cant){
-            return bc[indice].getfil();
-        }
-    }
-
-    int getbcC(int indice){ // get colum de barco
-        if(indice>=0 && indice < cant){
-            return bc[indice].getcol();
-        }
-    }
-
-    void settc(tablero tab){
-        tc=tab;
-    }
-
-
+    
     void randubicbarco();
     void randatacar(tablero* tj);
 

@@ -245,16 +245,17 @@ bool tablero::perdio() {
     for (int i = 0; i < fil; i++) {
         for (int j = 0; j < col; j++) {
             if(tab[i][j]==1){ //si hay algun barco en el tablero no perdio.
-                cont++;
+                cont=1;
+                break;
             }
         }
     }
 
-    if(cont==0){
-        return true;
-    }else{
-        return false;
-    }
+   if(cont==0){
+       return true;
+   }else{
+       return false;
+   }
 
 }
 

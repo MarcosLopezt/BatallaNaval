@@ -13,7 +13,7 @@ void usuario::ubicarbarco() {
     int x1, y1,r;
     int cont = 0;
     bool error, ubicado;
-    auto *b = new barco[7];
+    //auto *b = new barco[7];
 
     tj.inmatriz();
     tj.barc1();
@@ -72,7 +72,7 @@ void usuario::ubicarbarco() {
     cout<< "TABLERO FINAL: "<<endl;
     tj.mostrarTablero();
 
-    delete[] b;
+    //delete[] b;
 }
 
 void usuario::atacar(tablero* tc) {

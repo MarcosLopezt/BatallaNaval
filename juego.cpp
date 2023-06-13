@@ -13,7 +13,6 @@ void juego::start() {
     int n,r;
     string p;
 
-    
 
     //tablero t(9, 9);
     //tablero te(9, 9); //tab enemigo
@@ -53,13 +52,13 @@ void juego::start() {
     string x;
     while(true) {
         u.atacar(&te);
-        if(t.perdio()){
-            cout<< "PERDISTE"<<endl;
+        if(te.perdio()){
+            cout<< "PERDIO CPU"<<endl;
             break;
         }
         c.randatacar(&t);
-        if(te.perdio()){
-            cout<< "PERDIO CPU"<<endl;
+        if(t.perdio()){
+            cout<< "PERDISTE"<<endl;
             break;
         }
     }
