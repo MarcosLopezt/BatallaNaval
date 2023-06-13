@@ -5,7 +5,6 @@
 #include "juego.h"
 #include "jugador.h"
 #include "tablero.h"
-#include "barco.h"
 #include <iostream>
 using namespace std;
 
@@ -53,11 +52,13 @@ void juego::start() {
     while(true) {
         u.atacar(&te);
         if(te.perdio()){
-            cout<< "PERDIO CPU"<<endl;
+            cout<< "HAS HUNDIDO TODOS LOS BARCOS. "<<endl;
+            cout<< "GANASTE"<<endl;
             break;
         }
         c.randatacar(&t);
         if(t.perdio()){
+            cout<< "TE HAN HUNDIDO TODOS LOS BARCOS. "<<endl;
             cout<< "PERDISTE"<<endl;
             break;
         }

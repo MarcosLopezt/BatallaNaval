@@ -99,13 +99,15 @@ void usuario::atacar(tablero* tc) {
 
 void cpu::randatacar(tablero* tj){
     int f,c;
-    srand(time(nullptr));
+    //srand(time(nullptr));
 
     cout<< "-ATACA CPU-"<<endl;
-
+    int limitex=tc.getfil();
+    int limitey=tc.getcol();
     //coordenadas random de disparos
-    f = rand() % (tc.getfil() + 1);
-    c = rand() % (tc.getcol() + 1);
+    f = rand() % (limitex);
+    c = rand() % (limitey);
+
 
     tj->disparo(0,f,c);
     tj->mostrarTablero();
@@ -114,7 +116,7 @@ void cpu::randatacar(tablero* tj){
 
 void cpu::randubicbarco() {
 
-    srand(time(nullptr));
+    //  srand(time(nullptr));
 
     tc.inmatriz();
 

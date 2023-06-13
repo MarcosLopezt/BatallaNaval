@@ -10,10 +10,10 @@ using namespace std;
 
 class tablero {
 
-int fil;
-int col;
-barco* b= new barco[14];
-int** tab;
+    int fil;
+    int col;
+    barco* b= nullptr;
+    int** tab= nullptr;
 
 
 public:
@@ -21,23 +21,22 @@ public:
     tablero(int filas, int columnas){
         this->fil=filas;
         this->col=columnas;
-        b=new barco[14];
         tab=new int* [fil];
 
         for(int i=0;i<fil;i++){
             tab[i]= new int[col];
         }
+        b=new barco[14];
     }
 
     ~tablero(){
-       //liberar memoria asignad
-       for (int i=0;i<fil;i++){
-           delete[]tab[i];
-       }
-       delete[]tab;
-       delete[]b;
+        //liberar memoria asignad
+        for (int i=0;i<fil;i++){
+            delete[]tab[i];
+        }
+        delete[]tab;
+        delete[]b;
     }
-
     void setcol(int columnas){
         col=columnas;
     }

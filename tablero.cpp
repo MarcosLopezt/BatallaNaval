@@ -3,10 +3,9 @@
 //
 
 #include "tablero.h"
-#include "barco.h"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+//#include <cstdlib>
+//#include <ctime>
 
 using namespace std;
 
@@ -26,6 +25,9 @@ void tablero::initbarco() {
     b[11].setcas(3);
     b[12].setcas(3);
     b[13].setcas(4);
+
+    b[0].setpos(0);
+    b[7].setpos(0);
 
     for(int i=0;i<14;i++){
         b[i].setdisp(0);
@@ -72,13 +74,10 @@ void tablero::mostrarTablero() {
 void tablero::mostrarTableroEn() {
     for (int i = 0; i < fil; i++) {
         for (int j = 0; j < col; j++) {
-            if(tab[i][j]==0){
+            if(tab[i][j]==0 || tab[i][j]==1){ //muestra el tab enemigo, no debe mostar ubic de barcos
                 cout<< " 0 ";
             }
 
-            if(tab[i][j]==1){
-                cout<< " 0 ";
-            }
 
             if(tab[i][j]==2){
                 cout<< " # ";
@@ -167,34 +166,34 @@ void tablero::disparo(int index,int x, int y) {
 int x1=x;
 int y1=y;
 int ind=index;
+int hund=0;
 
-    if(tab[x][y]==0 || tab[x][y]==3){
-        cout<< "------"<<endl;
-        cout<< " AGUA "<<endl;
-        tab[x][y]=3;
-    }else if(tab[x][y]==1 || tab[x][y]==2){
-        cout<< "------"<<endl;
-        cout<< " HIT "<<endl;
-        tab[x][y]=2;
-        if(hundido(ind,x1,y1)==1){
-            cout<< "---------"<<endl;
-            cout<< " HUNDIDO "<<endl;
-            cout<< "---------"<<endl;
+if(tab!= nullptr && b!= nullptr) {
+    if (tab[x][y] == 0 || tab[x][y] == 3) {
+        cout << "------" << endl;
+        cout << " AGUA " << endl;
+        tab[x][y] = 3;
+    } else if (tab[x][y] == 1 || tab[x][y] == 2) {
+        cout << "------" << endl;
+        cout << " HIT " << endl;
+        tab[x][y] = 2;
+        hund = hundido(ind, x1, y1);
+        if (hund == 1) {
+            cout << "---------" << endl;
+            cout << " HUNDIDO " << endl;
+            cout << "---------" << endl;
         }
     }
-
+}else{
+    cout<< "ERROR. tab o b punteros son nulos."<<endl;
+}
 
 }
 
 int tablero::hundido(int index,int x, int y) {
-int resultado=0,cont,final;
-if(index==0){
-    cont=7;
-    final=14;
-}else{
-    cont=0;
-    final=7;
-}
+int resultado=0;
+    int cont = (index == 1) ? 7 : 0;
+    int final = (index == 1) ? 14 : 7;
     for(int i=cont;i<final;i++) {
         int barcoX = b[i].getfil();
         int barcoY = b[i].getcol();
@@ -207,6 +206,8 @@ if(index==0){
                 cout<< " Se DISPARO a un barco de 1 casilla. "<<endl;
                 resultado=1;
                 break;
+            }else {
+                continue;
             }
         }
 

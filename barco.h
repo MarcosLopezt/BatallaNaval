@@ -14,7 +14,7 @@ class barco {
     int pos; //horizontal(0) o vertical(1)
 
 public:
-    barco(){};
+    barco()=default;
     barco(int casillas,int fila, int columna, int posicion, int disparos){
         cas=casillas;
         fil=fila;
@@ -39,19 +39,19 @@ public:
         disp=disparos;
     }
 
-    int getdisp(){
+    int getdisp() const{
         return disp;
     }
-    int getcas(){
+    int getcas() const{
         return cas;
     }
-    int getfil(){
+    int getfil() const{
         return fil;
     }
-    int getcol(){
+    int getcol() const{
         return col;
     }
-    int getpos(){
+    int getpos() const{
         return pos;
     }
 

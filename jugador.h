@@ -13,12 +13,12 @@ class jugador {
     string nom;
 
 public:
-    jugador(){};
-    explicit jugador(string nombre){
+    jugador()=default;
+    explicit jugador(string& nombre){
         nom=nombre;
     }
 
-    void setnom(string nombre){
+    void setnom(string& nombre){
         nom=nombre;
     }
 
@@ -31,14 +31,14 @@ public:
 class usuario:public jugador{
     int cant=7; //cantidad de barcos.
     tablero tj;
-    barco* bj;
+    const barco* bj;
 
 public:
-    usuario(){}
+    usuario()=default;
     usuario(string nombre,tablero& tab, int cantidad):jugador(nombre),cant(cantidad),tj(tab){
         cant=cantidad;
         tj=tab;
-        bj= new barco[cant];
+        bj=new barco[cant];
     }
 
     ~usuario(){
@@ -51,24 +51,24 @@ public:
 
 };
 
-class cpu:public jugador{
-    int cant=7;
+class cpu : public jugador {
+    int cant = 7;
     barco* bc;
     tablero tc;
 
 public:
-    cpu(){};
-    cpu(string nombre,tablero tab, int cantida):jugador(nombre),cant(cantida),tc(tab){
-        cant=cantida;
-        tc=tab;
-        bc=new barco[cant];
+    cpu() = default;
+    cpu(string nombre, const tablero& tab, int cantida)
+            : jugador(nombre), cant(cantida), tc(tab), bc(new barco[cant]) {}
+
+    ~cpu() {
+        delete[] bc;
     }
 
-    ~cpu(){
-        delete []bc;
-    }
 
-    
+
+
+
     void randubicbarco();
     void randatacar(tablero* tj);
 
