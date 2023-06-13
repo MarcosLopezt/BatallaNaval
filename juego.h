@@ -9,16 +9,20 @@
 
 class juego {
     usuario j1;
+    usuario j2;
     cpu c1;
 
 public:
     juego(){};
-    juego(usuario jugador1,cpu cpuObj){
+    juego(usuario jugador1,cpu cpuObj, usuario jugador2){
         j1=jugador1;
         c1=cpuObj;
+        j2=jugador2;
     }
 
     void start();
+    void start2();
+
 
 };
 

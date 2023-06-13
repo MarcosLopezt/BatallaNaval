@@ -30,12 +30,12 @@ public:
 
 class usuario:public jugador{
     int cant=7; //cantidad de barcos.
-    tablero tj;
+    tablero* tj;
     const barco* bj;
 
 public:
-    usuario()=default;
-    usuario(string nombre,tablero& tab, int cantidad):jugador(nombre),cant(cantidad),tj(tab){
+    usuario()=default;         //& tab
+    usuario(string nombre,tablero* tab, int cantidad):jugador(nombre),cant(cantidad),tj(tab){
         cant=cantidad;
         tj=tab;
         bj=new barco[cant];
@@ -46,8 +46,8 @@ public:
     }
 
 
-    void ubicarbarco();
-    void atacar(tablero* tc);
+    void ubicarbarco(int repetidor);
+    void atacar(tablero* tc,int rep);
 
 };
 

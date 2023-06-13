@@ -37,7 +37,10 @@ void tablero::initbarco() {
 }
 
 
-void tablero::posbarc(int index,int posi) { //para poder guardar la posicion del barco.
+void tablero::posbarc(int repe,int index,int posi) { //para poder guardar la posicion del barco.
+    if(repe>0){
+        index=index+7;
+    }
     b[index].setpos(posi);
 }
 
@@ -95,7 +98,7 @@ void tablero::mostrarTableroEn() {
 
 
 
-void tablero::barc1() { //ubicar barco 1, que no puede ser vertical u horizontal.
+void tablero::barc1(int repe) { //ubicar barco 1, que no puede ser vertical u horizontal.
     int c,f,cont3;
 
     cout<< "--------------------"<<endl;
@@ -117,13 +120,25 @@ void tablero::barc1() { //ubicar barco 1, que no puede ser vertical u horizontal
         }
     }while(cont3==1); // valida si las coord ingresadas entran en el tabblero.
 
+    if(repe==0){
+        b[0].setfil(f);
+        b[0].setcol(c);
+    }else{
+        b[7].setfil(f);
+        b[7].setcol(c);
+    }
+
 
 }
 
 
 
 
-bool tablero::verificado(int index, int x, int y) { //verifica la ubicacion del barco y lo inserta en el tablero
+bool tablero::verificado(int repe,int index, int x, int y) { //verifica la ubicacion del barco y lo inserta en el tablero
+    if(repe>0){
+        index=index+7;
+    }
+
     if((b[index].getpos()==1) && (x+b[index].getcas()>fil)){ //verifica si el largo del barco se va del tablero
         return false;
     }
@@ -162,7 +177,7 @@ bool tablero::verificado(int index, int x, int y) { //verifica la ubicacion del 
     return true;
 }
 
-void tablero::disparo(int index,int x, int y) {
+void tablero::disparo(int repe,int index,int x, int y) {
 int x1=x;
 int y1=y;
 int ind=index;
@@ -177,7 +192,7 @@ if(tab!= nullptr && b!= nullptr) {
         cout << "------" << endl;
         cout << " HIT " << endl;
         tab[x][y] = 2;
-        hund = hundido(ind, x1, y1);
+        hund = hundido(repe,ind, x1, y1);
         if (hund == 1) {
             cout << "---------" << endl;
             cout << " HUNDIDO " << endl;
@@ -190,10 +205,10 @@ if(tab!= nullptr && b!= nullptr) {
 
 }
 
-int tablero::hundido(int index,int x, int y) {
+int tablero::hundido(int repe,int index,int x, int y) {
 int resultado=0;
-    int cont = (index == 1) ? 7 : 0;
-    int final = (index == 1) ? 14 : 7;
+    int cont = (index == 1 ||repe == 1) ? 7 : 0;
+    int final = (index == 1 ||repe ==1) ? 14 : 7;
     for(int i=cont;i<final;i++) {
         int barcoX = b[i].getfil();
         int barcoY = b[i].getcol();

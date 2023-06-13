@@ -51,15 +51,15 @@ public:
         return fil;
     }
 
-    bool verificado(int index, int x, int y);
+    bool verificado(int repe,int index, int x, int y);
     void inmatriz();
     void mostrarTablero();
     void mostrarTableroEn();
     void initbarco();
-    void posbarc(int index,int posi);
-    void barc1();
-    void disparo(int index,int x,int y);
-    int hundido(int index,int x, int y);
+    void posbarc(int repe,int index,int posi);
+    void barc1(int repe);
+    void disparo(int repe,int index,int x,int y);
+    int hundido(int repe,int index,int x, int y);
     bool perdio();
 
 
