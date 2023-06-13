@@ -8,13 +8,17 @@
 #include <iostream>
 
 class juego {
-    jugador j1;
+    usuario j1;
+    cpu c1;
 
 public:
     juego(){};
-    juego(jugador jugador1){
+    juego(usuario jugador1,cpu cpuObj){
         j1=jugador1;
+        c1=cpuObj;
     }
+
+    void start();
 
 };
 

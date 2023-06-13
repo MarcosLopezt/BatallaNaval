@@ -73,6 +73,12 @@ build CMakeFiles/BatallaNaval.dir/barco.cpp.obj: CXX_COMPILER__BatallaNaval_Debu
   OBJECT_DIR = CMakeFiles\BatallaNaval.dir
   OBJECT_FILE_DIR = CMakeFiles\BatallaNaval.dir
 
+build CMakeFiles/BatallaNaval.dir/tablero.cpp.obj: CXX_COMPILER__BatallaNaval_Debug C$:/Users/tnovaira/BatallaNaval/tablero.cpp || cmake_object_order_depends_target_BatallaNaval
+  DEP_FILE = CMakeFiles\BatallaNaval.dir\tablero.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\BatallaNaval.dir
+  OBJECT_FILE_DIR = CMakeFiles\BatallaNaval.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BatallaNaval
@@ -81,7 +87,7 @@ build CMakeFiles/BatallaNaval.dir/barco.cpp.obj: CXX_COMPILER__BatallaNaval_Debu
 #############################################
 # Link the executable BatallaNaval.exe
 
-build BatallaNaval.exe: CXX_EXECUTABLE_LINKER__BatallaNaval_Debug CMakeFiles/BatallaNaval.dir/main.cpp.obj CMakeFiles/BatallaNaval.dir/juego.cpp.obj CMakeFiles/BatallaNaval.dir/jugador.cpp.obj CMakeFiles/BatallaNaval.dir/barco.cpp.obj
+build BatallaNaval.exe: CXX_EXECUTABLE_LINKER__BatallaNaval_Debug CMakeFiles/BatallaNaval.dir/main.cpp.obj CMakeFiles/BatallaNaval.dir/juego.cpp.obj CMakeFiles/BatallaNaval.dir/jugador.cpp.obj CMakeFiles/BatallaNaval.dir/barco.cpp.obj CMakeFiles/BatallaNaval.dir/tablero.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\BatallaNaval.dir
