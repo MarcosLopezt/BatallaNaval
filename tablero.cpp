@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void tablero::initbarco() {
+void tablero::initbarco() { // se inicia los diferentes tipos de barco con sus casillas y posiciones en 0,
     b[0].setcas(1);
     b[1].setcas(2);
     b[2].setcas(2);
@@ -53,7 +53,7 @@ void tablero::inmatriz()  { //ponemos los valores del tablero en 0;
     }
 }
 
-void tablero::mostrarTablero() {
+void tablero::mostrarTablero() { //muestra el tablero personal.
     for (int i = 0; i < fil; i++) {
         for (int j = 0; j < col; j++) {
             if(tab[i][j]==0 || tab[i][j]==3){
@@ -98,7 +98,7 @@ void tablero::mostrarTableroEn() {
 
 
 
-void tablero::barc1(int repe) { //ubicar barco 1, que no puede ser vertical u horizontal.
+void tablero::barc1(int repe) { //ubicar barco 1.
     int c,f,cont3;
 
     cout<< "--------------------"<<endl;
@@ -120,10 +120,10 @@ void tablero::barc1(int repe) { //ubicar barco 1, que no puede ser vertical u ho
         }
     }while(cont3==1); // valida si las coord ingresadas entran en el tabblero.
 
-    if(repe==0){
+    if(repe==0){ //se guarda la posicion del barco 1.
         b[0].setfil(f);
         b[0].setcol(c);
-    }else{
+    }else{ //si repe>0 significa que se implementa la funcion por segunda vez, por ende es la ubicacion de otro barco. (jugador 2)
         b[7].setfil(f);
         b[7].setcol(c);
     }
@@ -184,7 +184,7 @@ int ind=index;
 int hund=0;
 
 if(tab!= nullptr && b!= nullptr) {
-    if (tab[x][y] == 0 || tab[x][y] == 3) {
+    if (tab[x][y] == 0 || tab[x][y] == 3) { //si no hay ningun barco responde agua.
         cout << "------" << endl;
         cout << " AGUA " << endl;
         tab[x][y] = 3;
@@ -192,7 +192,7 @@ if(tab!= nullptr && b!= nullptr) {
         cout << "------" << endl;
         cout << " HIT " << endl;
         tab[x][y] = 2;
-        hund = hundido(repe,ind, x1, y1);
+        hund = hundido(repe,ind, x1, y1); //si le pega a un barco, verifica si se hundio.
         if (hund == 1) {
             cout << "---------" << endl;
             cout << " HUNDIDO " << endl;
@@ -205,7 +205,7 @@ if(tab!= nullptr && b!= nullptr) {
 
 }
 
-int tablero::hundido(int repe,int index,int x, int y) {
+int tablero::hundido(int repe,int index,int x, int y) { //funcion que checkea si se hundio el barco que ha sido disparado. Y dice el tipo de barco.
 int resultado=0;
     int cont = (index == 1 ||repe == 1) ? 7 : 0;
     int final = (index == 1 ||repe ==1) ? 14 : 7;

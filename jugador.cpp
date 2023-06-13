@@ -9,7 +9,7 @@
 using namespace std;
 
 
-void usuario::ubicarbarco(int repetidor) {
+void usuario::ubicarbarco(int repetidor) { //ubica barco de jgadores. si repetidor es 0, es el primer jugador, si repetidor es 1 es el segundo jugador.
     int x1, y1,r;
     int cont = 0;
     bool error, ubicado;
@@ -54,7 +54,7 @@ void usuario::ubicarbarco(int repetidor) {
                     tj->posbarc(repetidor,i,1); //posicion barco horiz o verti
                     cont=0;
                 } else {
-                    cont++;
+                    cont++; //cont para verificar la orientacion.
                 }
             } while (cont > 0);
 
@@ -75,8 +75,8 @@ void usuario::ubicarbarco(int repetidor) {
     //delete[] b;
 }
 
-void usuario::atacar(tablero* tc,int rep) {
-    int f,c;
+void usuario::atacar(tablero* tc,int rep) { //funcion de ataque de jugadores. si repetidor es 0, es el primer jugador, si repetidor es 1 es el segundo jugador
+    int f,c; //fila y  columna.
     bool afuera;
 
     cout<< "-ATAQUE-"<<endl;
@@ -92,12 +92,12 @@ void usuario::atacar(tablero* tc,int rep) {
         }
     }while(afuera);
 
-    tc->disparo(rep,1,f,c);
-    tc->mostrarTableroEn();
+    tc->disparo(rep,1,f,c); //funcion de disparo.
+    tc->mostrarTableroEn(); //muestra el tab del enemigo para ver resultados.
 
 }
 
-void cpu::randatacar(tablero* tj){
+void cpu::randatacar(tablero* tj){ //funcion random para generar ataques de CPU
     int f,c;
     //srand(time(nullptr));
 
@@ -110,11 +110,11 @@ void cpu::randatacar(tablero* tj){
 
 
     tj->disparo(0,0,f,c);
-    tj->mostrarTablero();
+    tj->mostrarTablero(); //muestra tab de jugador, para ver donde le han pegado
 }
 
 
-void cpu::randubicbarco() {
+void cpu::randubicbarco() { //funcion rand para ubicar barco de CPU
 
     //  srand(time(nullptr));
     int rep=0;
@@ -132,6 +132,6 @@ void cpu::randubicbarco() {
     }
 
     cout<<"TABLERO CPU: "<<endl;
-    tc.mostrarTablero();
+    tc.mostrarTablero(); //se muestra tab de CPU, solo para verificar si funciona. borrar.
 
 }

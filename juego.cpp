@@ -8,13 +8,9 @@
 #include <iostream>
 using namespace std;
 
-void juego::start() {
+void juego::start() { //juego vs CPU
     int n,r;
     string p;
-
-
-    //tablero t(9, 9);
-    //tablero te(9, 9); //tab enemigo
 
     cout<< "JUGADOR 1: "<<endl;
     cout<< "Nombre: "<<endl;
@@ -65,7 +61,7 @@ void juego::start() {
     }
 }
 
-void juego::start2() {
+void juego::start2() { //juego con dos jugadores
     int n,r;
     string p;
     string p2;
