@@ -40,7 +40,7 @@ void cpu::randubicbarco() { //funcion rand para ubicar barco de CPU
         }
     }
 
-    cout<<"TABLERO CPU: "<<endl;
-    tc->mostrarTablero(); //se muestra tab de CPU, solo para verificar si funciona. borrar.
+    //cout<<"TABLERO CPU: "<<endl;
+   // tc->mostrarTablero(); //se muestra tab de CPU, solo para verificar si funciona. borrar.
 
 }

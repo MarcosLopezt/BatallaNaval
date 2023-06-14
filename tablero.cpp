@@ -104,7 +104,7 @@ void tablero::barc1(int repe) { //ubicar barco 1.
     cout<< "--------------------"<<endl;
 
     do {
-        cout << "Ingrese la coordenada (ej: A1) del barco de 1 casilla: " << endl;
+        cout << "Ingrese la coordenada (ej: 3,4) del barco de 1 casilla: " << endl;
         cout << "Fila: " << endl;
         cin >> f;
         cout << "Columna: " << endl;

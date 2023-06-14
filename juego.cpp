@@ -11,8 +11,9 @@
 using namespace std;
 
 void juego::start() { //juego vs CPU
-    int n,r;
+    int n,r,continuar;
     string p;
+    barco b;
 
     cout<< "JUGADOR 1: "<<endl;
     cout<< "Nombre: "<<endl;
@@ -43,28 +44,47 @@ void juego::start() { //juego vs CPU
     cpu c("cpu", &te, 7);
     t.initbarco();
     te.initbarco();
+    b.mostrarbarcos();
+    cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR A UBICARLOS"<<endl;
+    cin>>continuar;
+    cout<<endl;
     u.ubicarbarco(0);
+    cout<<endl<<endl;
+    cout<< "CPU ubica sus barcos. "<<endl;
     c.randubicbarco();
+    cout<<endl<<endl<<endl<<endl<<endl;
 
     string x;
     while(true) {
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+
         u.atacar(&te,0);
         if(te.perdio()){
             cout<< "HAS HUNDIDO TODOS LOS BARCOS. "<<endl;
             cout<< "GANASTE"<<endl;
             break;
         }
+
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+        cout<<endl<<endl<<endl<<endl<<endl;
+
         c.randatacar(&t);
         if(t.perdio()){
             cout<< "TE HAN HUNDIDO TODOS LOS BARCOS. "<<endl;
             cout<< "PERDISTE"<<endl;
             break;
         }
+
+        cout<< "Resultados del ataque de CPU "<<endl;
+        cout<<endl;
     }
 }
 
 void juego::start2() { //juego con dos jugadores
     int n,r,s=0,continuar;
+    barco b;
     string p;
     string p2;
 
@@ -101,6 +121,10 @@ void juego::start2() { //juego con dos jugadores
     usuario u2(p2, &te, 7);
     t.initbarco();
     te.initbarco();
+    b.mostrarbarcos();
+    cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR A UBICARLOS"<<endl;
+    cin>>continuar;
+    cout<<endl;
     cout<< "---------------"<<endl;
     cout<< "JUGADOR 1: "<<u.getnom()<<endl;
     u.ubicarbarco(0);
