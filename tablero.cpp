@@ -30,10 +30,8 @@ void tablero::initbarco() { // se inicia los diferentes tipos de barco con sus c
     b[7].setpos(0);
 
     for(int i=0;i<14;i++){
-        b[i].setdisp(0);
+        b[i].setdisp(0); //disparos que recibe cada barco al empezar.
     }
-
-
 }
 
 
@@ -146,8 +144,8 @@ bool tablero::verificado(int repe,int index, int x, int y) { //verifica la ubica
         return false;
     }
 
-    for (int i=0;i<b[index].getcas();i++){
-        if(b[index].getpos()==1){
+    for (int i=0;i<b[index].getcas();i++){ //recorre casillas del barco de 0 hasta casillas.
+        if(b[index].getpos()==1){ //si vertical o horizontal.
             if(tab[x+i][y]==1) {
                 return false; // si hay barco devuelve false
             }
@@ -207,9 +205,9 @@ if(tab!= nullptr && b!= nullptr) {
 
 int tablero::hundido(int repe,int index,int x, int y) { //funcion que checkea si se hundio el barco que ha sido disparado. Y dice el tipo de barco.
 int resultado=0;
-    int cont = (index == 1 ||repe == 1) ? 7 : 0;
+    int cont = (index == 1 ||repe == 1) ? 7 : 0; //
     int final = (index == 1 ||repe ==1) ? 14 : 7;
-    for(int i=cont;i<final;i++) {
+    for(int i=cont;i<final;i++) { //recorre barcos del enemigo.
         int barcoX = b[i].getfil();
         int barcoY = b[i].getcol();
         int casillas = b[i].getcas();

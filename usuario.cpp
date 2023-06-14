@@ -60,7 +60,7 @@ void usuario::ubicarbarco(int repetidor) { //ubica barco de jgadores. si repetid
                 cout<< "SU BARCO ESTA MAL UBICADO. "<<endl;
                 cout<<endl<<endl;
             }
-            tj->mostrarTablero();
+            tj->mostrarTablero(); //muestra tab desp de ubicar el barco.
 
         } while (!ubicado);
     }
@@ -69,7 +69,6 @@ void usuario::ubicarbarco(int repetidor) { //ubica barco de jgadores. si repetid
     cout<< "TABLERO FINAL: "<<endl;
     tj->mostrarTablero();
 
-    //delete[] b;
 }
 
 void usuario::atacar(tablero* tc,int rep) { //funcion de ataque de jugadores. si repetidor es 0, es el primer jugador, si repetidor es 1 es el segundo jugador

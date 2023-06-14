@@ -36,8 +36,8 @@ void juego::start() { //juego vs CPU
         }
     } while (r < 9);
 
-    tablero t(n,r);
-    tablero te(n,r);
+    tablero t(n,r); //tablero del jugador;
+    tablero te(n,r); //tab del cpu;
 
     usuario u(p, &t, 7);
     cpu c("cpu", &te, 7);
@@ -95,7 +95,7 @@ void juego::start2() { //juego con dos jugadores
     } while (r < 9);
 
     tablero t(n,r);
-    tablero te(n,r);
+    tablero te(n,r); //tab jugador 2
 
     usuario u(p, &t, 7);
     usuario u2(p2, &te, 7);
