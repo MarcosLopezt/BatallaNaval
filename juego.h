@@ -5,6 +5,8 @@
 #ifndef BATALLANAVAL_JUEGO_H
 #define BATALLANAVAL_JUEGO_H
 #include "jugador.h"
+#include "usuario.h"
+#include "cpu.h"
 #include <iostream>
 
 class juego {
