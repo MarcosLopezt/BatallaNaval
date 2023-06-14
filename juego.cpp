@@ -64,7 +64,7 @@ void juego::start() { //juego vs CPU
 }
 
 void juego::start2() { //juego con dos jugadores
-    int n,r;
+    int n,r,s=0,continuar;
     string p;
     string p2;
 
@@ -101,29 +101,79 @@ void juego::start2() { //juego con dos jugadores
     usuario u2(p2, &te, 7);
     t.initbarco();
     te.initbarco();
-    cout<< "-----------"<<endl;
+    cout<< "---------------"<<endl;
     cout<< "JUGADOR 1: "<<u.getnom()<<endl;
     u.ubicarbarco(0);
-    cout<< "-----------"<<endl;
+    cout<< "---------------"<<endl;
     cout<< "JUGADOR 2: "<<u2.getnom()<<endl;
     u2.ubicarbarco(1);
 
     string x;
     while(true) {
-        cout<< "ATACA JUGADOR 1: "<<u.getnom()<<endl;
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        cout<< "TURNO JUGADOR 1: "<<u.getnom()<<endl;
+        cout<<"-----------------------"<<endl;
+        cout<<"| "<<u2.getnom()<< " NO MIRES |"<<endl;
+        cout<<"-----------------------"<<endl;
+        do {
+            s=1;
+            cout << "YA SE FUE " << u2.getnom() << " ? " << endl;
+            cout << "[1].SI " << endl;
+            cout << "[2].NO " << endl;
+            cin>>s;
+            if(s==2){
+                cout<< "Por favor "<<u2.getnom()<< " vayase, NO ES SU TURNO. "<<endl;
+                cout<<endl;
+            }
+        }while(s!=1);
         cout<< "Tablero de "<<u.getnom()<< " : "<<endl;
         t.mostrarTablero();
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        cout<< "TABLERO ENEMIGO: "<<endl;
+        te.mostrarTableroEn();
+        cout<< "ATACA JUGADROR 1: "<<u.getnom()<<endl;
         u.atacar(&te,0);
         if(te.perdio()){
-            cout<< "GANO "<<p<<endl;
+            cout<< "|----------------"<<endl;
+            cout<< "|GANO "<<u.getnom()<<"!!!!!"<<endl;
+            cout<< "|----------------"<<endl;
             break;
         }
-        cout<< "ATACA JUGADOR 2: "<<u2.getnom()<<endl;
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        cout<< "TURNO JUGADOR 2: "<<u2.getnom()<<endl;
+        cout<<"-----------------------"<<endl;
+        cout<<"| "<<u.getnom()<< " NO MIRES |"<<endl;
+        cout<<"-----------------------"<<endl;
+        do {
+            s=1;
+            cout << "YA SE FUE " << u.getnom() << " ? " << endl;
+            cout << "[1].SI " << endl;
+            cout << "[2].NO " << endl;
+            cin>>s;
+            if(s==2){
+                cout<< "Por favor "<<u.getnom()<< ", vayase, NO ES SU TURNO. "<<endl;
+                cout<<endl;
+            }
+        }while(s!=1);
         cout<< "Tablero de "<<u2.getnom()<< " : "<<endl;
         te.mostrarTablero();
+        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+        cin>>continuar;
+        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        cout<< "TABLERO ENEMIGO: "<<endl;
+        t.mostrarTableroEn();
+        cout<< "ATACA JUGADOR 2: "<<u2.getnom()<<endl;
         u2.atacar(&t,1);
         if(t.perdio()){
-            cout<< "GANO "<<p2<<endl;
+            cout<< "|----------------"<<endl;
+            cout<< "|GANO "<<u2.getnom()<<"!!!!!"<<endl;
+            cout<< "|----------------"<<endl;
             break;
         }
     }

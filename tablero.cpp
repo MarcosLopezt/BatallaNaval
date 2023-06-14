@@ -189,6 +189,7 @@ if(tab!= nullptr && b!= nullptr) {
     } else if (tab[x][y] == 1 || tab[x][y] == 2) {
         cout << "------" << endl;
         cout << " HIT " << endl;
+        cout << "------"<<endl;
         tab[x][y] = 2;
         hund = hundido(repe,ind, x1, y1); //si le pega a un barco, verifica si se hundio.
         if (hund == 1) {
@@ -205,8 +206,8 @@ if(tab!= nullptr && b!= nullptr) {
 
 int tablero::hundido(int repe,int index,int x, int y) { //funcion que checkea si se hundio el barco que ha sido disparado. Y dice el tipo de barco.
 int resultado=0;
-    int cont = (index == 1 ||repe == 1) ? 7 : 0; //
-    int final = (index == 1 ||repe ==1) ? 14 : 7;
+    int cont = (index == 1 && repe == 0) ? 7 : 0; //si es primer usuario cont=7, si es segundo usuario o cpu cont=0;
+    int final = (index == 1 && repe ==0) ? 14 : 7;
     for(int i=cont;i<final;i++) { //recorre barcos del enemigo.
         int barcoX = b[i].getfil();
         int barcoY = b[i].getcol();
@@ -214,42 +215,45 @@ int resultado=0;
         int orientacion = b[i].getpos();
         int disp = b[i].getdisp();
 
-        if(casillas==1){
-            if(x==barcoX && y==barcoY){
-                cout<< " Se DISPARO a un barco de 1 casilla. "<<endl;
-                resultado=1;
+        if (casillas == 1) {
+            if (x == barcoX && y == barcoY) {
+                cout << " Se DISPARO a un barco de 1 casilla. " << endl;
+                cout<<endl;
+                resultado = 1;
                 break;
-            }else {
+            } else {
                 continue;
             }
         }
 
-        if(orientacion==1) {
-            if (x >= barcoX && x <= barcoX + casillas && y == barcoY) { //recorre las casillas del barco de manera vertical
-                disp++;
-                b[i].setdisp(disp);
-                cout<< "Se DISPARO a un barco de "<<casillas<< " casillas"<<endl;
-                if(disp==casillas){
-                    resultado=1;
-                    break; //se hunde el barco porque tiene igual cantidad de disparos recibidos que de casillas.
+            if (orientacion == 1) {
+                if (x >= barcoX && x <= barcoX + casillas && y == barcoY) { //recorre las casillas del barco de manera vertical
+                    disp++;
+                    b[i].setdisp(disp);
+                    cout << "Se DISPARO a un barco de " << casillas << " casillas" << endl;
+                    cout<<endl;
+                    if (disp == casillas) {
+                        resultado = 1;
+                        break; //se hunde el barco porque tiene igual cantidad de disparos recibidos que de casillas.
+                    }
+                    break;
                 }
-                break;
+
+            } else {
+                if (x == barcoX && y >= barcoY && y <= barcoY + casillas) { //recorre las casillas del barco de manera horizontal
+                    disp++;
+                    b[i].setdisp(disp);
+                    cout << "Se DISPARO a un barco de " << casillas << " casillas" << endl;
+                    if (disp == casillas) {
+                        resultado = 1;
+                        break; //sale una vez que se hunde barco
+                    }
+                    break;
+                }
             }
 
-        } else {
-            if (x == barcoX && y >= barcoY && y <= barcoY + casillas) { //recorre las casillas del barco de manera horizontal
-                disp++;
-                b[i].setdisp(disp);
-                cout<< "Se DISPARO a un barco de "<<casillas<< " casillas"<<endl;
-                if (disp == casillas) {
-                    resultado=1;
-                    break; //sale una vez que se hunde barco
-                }
-                break;
-            }
         }
 
-    }
 
     return resultado;
 }
