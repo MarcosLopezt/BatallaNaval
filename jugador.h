@@ -11,11 +11,19 @@ using namespace std;
 
 class jugador {
     string nom;
+    barco* b;
+    int cant=7;
 
 public:
     jugador()=default;
-    explicit jugador(string& nombre){
+    jugador(string& nombre, int cantidad){
         nom=nombre;
+        cant=cantidad;
+        b= new barco[cant];
+    }
+
+    ~jugador(){
+        delete[]b;
     }
 
     void setnom(string& nombre){
@@ -28,52 +36,7 @@ public:
 
 };
 
-class usuario:public jugador{
-    int cant=7; //cantidad de barcos.
-    tablero* tj;
-    const barco* bj;
 
-public:
-    usuario()=default;         //& tab
-    usuario(string nombre,tablero* tab, int cantidad):jugador(nombre),cant(cantidad),tj(tab){
-        cant=cantidad;
-        tj=tab;
-        bj=new barco[cant];
-    }
-
-    ~usuario(){
-        delete[]bj;
-    }
-
-
-    void ubicarbarco(int repetidor);
-    void atacar(tablero* tc,int rep);
-
-};
-
-class cpu : public jugador {
-    int cant = 7;
-    barco* bc;
-    tablero tc;
-
-public:
-    cpu() = default;
-    cpu(string nombre, const tablero& tab, int cantida)
-            : jugador(nombre), cant(cantida), tc(tab), bc(new barco[cant]) {}
-
-    ~cpu() {
-        delete[] bc;
-    }
-
-
-
-
-
-    void randubicbarco();
-    void randatacar(tablero* tj);
-
-
-};
 
 
 #endif //BATALLANAVAL_JUGADOR_H

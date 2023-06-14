@@ -5,6 +5,8 @@
 #include "juego.h"
 #include "jugador.h"
 #include "tablero.h"
+#include "usuario.h"
+#include "cpu.h"
 #include <iostream>
 using namespace std;
 
@@ -38,7 +40,7 @@ void juego::start() { //juego vs CPU
     tablero te(n,r);
 
     usuario u(p, &t, 7);
-    cpu c("cpu", te, 7);
+    cpu c("cpu", &te, 7);
     t.initbarco();
     te.initbarco();
     u.ubicarbarco(0);
