@@ -10,8 +10,10 @@
 #include <iostream>
 using namespace std;
 
+
 void juego::start() { //juego vs CPU
-    int n,r,continuar;
+    int n,r;
+    char continuar;
     string p;
     barco b;
 
@@ -56,20 +58,14 @@ void juego::start() { //juego vs CPU
 
     string x;
     while(true) {
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-
+        esperartecla();
         u.atacar(&te,0);
         if(te.perdio()){
             cout<< "HAS HUNDIDO TODOS LOS BARCOS. "<<endl;
             cout<< "GANASTE"<<endl;
             break;
         }
-
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-        cout<<endl<<endl<<endl<<endl<<endl;
-
+        esperartecla();
         c.randatacar(&t);
         if(t.perdio()){
             cout<< "TE HAN HUNDIDO TODOS LOS BARCOS. "<<endl;
@@ -83,7 +79,8 @@ void juego::start() { //juego vs CPU
 }
 
 void juego::start2() { //juego con dos jugadores
-    int n,r,s=0,continuar;
+    int n,r,s=0;
+    char continuar;
     barco b;
     string p;
     string p2;
@@ -134,9 +131,7 @@ void juego::start2() { //juego con dos jugadores
 
     string x;
     while(true) {
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        esperartecla();
         cout<< "TURNO JUGADOR 1: "<<u.getnom()<<endl;
         cout<<"-----------------------"<<endl;
         cout<<"| "<<u2.getnom()<< " NO MIRES |"<<endl;
@@ -154,9 +149,7 @@ void juego::start2() { //juego con dos jugadores
         }while(s!=1);
         cout<< "Tablero de "<<u.getnom()<< " : "<<endl;
         t.mostrarTablero();
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        esperartecla();
         cout<< "TABLERO ENEMIGO: "<<endl;
         te.mostrarTableroEn();
         cout<< "ATACA JUGADROR 1: "<<u.getnom()<<endl;
@@ -167,9 +160,7 @@ void juego::start2() { //juego con dos jugadores
             cout<< "|----------------"<<endl;
             break;
         }
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        esperartecla();
         cout<< "TURNO JUGADOR 2: "<<u2.getnom()<<endl;
         cout<<"-----------------------"<<endl;
         cout<<"| "<<u.getnom()<< " NO MIRES |"<<endl;
@@ -187,9 +178,7 @@ void juego::start2() { //juego con dos jugadores
         }while(s!=1);
         cout<< "Tablero de "<<u2.getnom()<< " : "<<endl;
         te.mostrarTablero();
-        cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
-        cin>>continuar;
-        cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+        esperartecla();
         cout<< "TABLERO ENEMIGO: "<<endl;
         t.mostrarTableroEn();
         cout<< "ATACA JUGADOR 2: "<<u2.getnom()<<endl;
@@ -201,4 +190,11 @@ void juego::start2() { //juego con dos jugadores
             break;
         }
     }
+}
+
+void juego::esperartecla() {
+    char continuar;
+    cout<< "PRESIONE CUALQUIER NUMERO PARA CONTINUAR: "<<endl;
+    cin>>continuar;
+    cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
 }

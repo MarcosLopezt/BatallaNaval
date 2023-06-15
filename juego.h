@@ -24,6 +24,7 @@ public:
 
     void start();
     void start2();
+    void esperartecla();
 
 
 };
